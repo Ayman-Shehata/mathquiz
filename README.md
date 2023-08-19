@@ -15,4 +15,9 @@ The app can generate random multiplication questions. The multiplication questio
 ## ScreenShot
 
 ![Screen Shot](Screenshot.png)
+
+Without correct answer
 ![code-snapshot](code-snapshot.png)
+
+With correct answer
+![code-snapshot](code-snapshot2.png)
