@@ -5,7 +5,6 @@ import 'dart:math';
   int dividend;
   int divisor;
   int quotient;
-
   do {
     dividend = random.nextInt(90) + 10;
     divisor = random.nextInt(9) + 2;
@@ -13,15 +12,12 @@ import 'dart:math';
   } while (dividend % divisor != 0);
   String question = '$dividend divided by $divisor = .......';
   List<int> answers = [quotient];
-
   while (answers.length < 4) {
     int randomAnswer = quotient + random.nextInt(10);
     if (!answers.contains(randomAnswer)) {
       answers.add(randomAnswer);
     }
   }
-
   answers.shuffle();
-
   return (answers, question);
 }
