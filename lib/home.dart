@@ -14,13 +14,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   late String question;
   late List<int> answers;
+  late int correctAnswer;
 
   generateQuestion() {
-    (List<int>, String) randomAnswers = divideAndGenerateRandomAnswers();
-    question = randomAnswers.$2;
-    answers = randomAnswers.$1;
-    print(randomAnswers.$1);
-    print(randomAnswers.$2);
+    (String, List<int>, int) randomAnswers = divideAndGenerateRandomAnswers();
+    question = randomAnswers.$1;
+    answers = randomAnswers.$2;
+    correctAnswer = randomAnswers.$3;
   }
 
   @override
@@ -60,17 +60,33 @@ class _MyHomePageState extends State<MyHomePage> {
               child: ListView.builder(
                   itemCount: 4,
                   itemBuilder: (BuildContext context, int index) {
-                    return Card(
-                      elevation: 10,
-                      child: ListTile(
+                    return GestureDetector(
+                      child: Card(
+                        elevation: 10,
+                        child: ListTile(
                           leading: const Icon(Icons.question_answer),
                           trailing: Text(
                             "${index + 1} ) ",
                             style: const TextStyle(
                                 color: Colors.green, fontSize: 15),
                           ),
-                          title: Text(answers[index].toString(),
-                              style: const TextStyle(fontSize: 20))),
+                          title: Text(
+                            answers[index].toString(),
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ),
+                      ),
+                      onTap: () {
+                        (answers[index] == correctAnswer)
+                            ? _showDialog(
+                                context: context,
+                                content: 'إجابة صحيحة',
+                                message: 'أحسنت')
+                            : _showDialog(
+                                context: context,
+                                content: 'حاول مرة أخرى ',
+                                message: 'خطأ');
+                      },
                     );
                   }),
             ),
@@ -84,4 +100,27 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+void _showDialog(
+    {required BuildContext context,
+    required String message,
+    required String content}) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text(message),
+        content: Text(content),
+        actions: <Widget>[
+          ElevatedButton(
+            child: Text("OK"),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
 }

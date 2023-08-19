@@ -1,6 +1,6 @@
 import 'dart:math';
 
-(List<int>, String) divideAndGenerateRandomAnswers() {
+(String, List<int>, int) divideAndGenerateRandomAnswers() {
   Random random = Random();
   int dividend;
   int divisor;
@@ -19,5 +19,5 @@ import 'dart:math';
     }
   }
   answers.shuffle();
-  return (answers, question);
+  return (question, answers, quotient);
 }
