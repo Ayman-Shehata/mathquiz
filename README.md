@@ -1,16 +1,17 @@
-# mathquiz
+# Division random question App
 
-A new Flutter project.
+A brief description of your project.
 
-## Getting Started
+## Table of Contents
 
-This project is a starting point for a Flutter application.
+- [Main](#Main)
+- [ScreenShot](#ScreenShot)
 
-A few resources to get you started if this is your first Flutter project:
+## Main
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The app can also generate random multiplication questions. The multiplication questions are generated using a random number generator. The multiplication questions are displayed on the screen. The dividend must divisable by the divisor.
+
+## ScreenShot
+
+![Screen Shot](Screenshot.png)
